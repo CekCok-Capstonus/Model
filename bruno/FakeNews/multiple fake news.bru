@@ -1,0 +1,38 @@
+meta {
+  name: multiple fake news
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://127.0.0.1:8000/predict/batch
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "texts": [
+      "Beredar di media sosial klaim bahwa FIFA melalui Presiden Gianni Infantino mengumumkan pertandingan kualifikasi ulang antara Timnas Indonesia dan Oman untuk memperebutkan tiket Piala Dunia 2026. Faktanya klaim ini adalah hoaks. Video yang digunakan berasal dari pidato Infantino menjelang Piala Dunia 2022 di Qatar. Timnas Indonesia sendiri telah resmi tersingkir dari Piala Dunia 2026 setelah kalah 0-1 dari Irak pada Oktober 2025.",
+  
+      "Beredar unggahan di Facebook berisi surat pemberitahuan pencairan bantuan sosial 2026 menggunakan kop Kementerian Keuangan, yang meminta masyarakat mendaftar sebagai penerima bantuan melalui Facebook Messenger. Kemenkeu telah menegaskan bahwa surat tersebut adalah hoaks dan meminta masyarakat tidak memberikan data pribadi melalui saluran tidak resmi karena terindikasi phishing.",
+  
+      "Beredar narasi di media sosial yang mengklaim Kementerian Agama memperbolehkan korupsi asalkan sesuai prosedur dan syariat Islam. Kemenag melalui akun Instagram resminya pada April 2026 telah membantah narasi tersebut dan menegaskan informasi itu 100 persen tidak benar. Masyarakat diimbau untuk selalu melakukan cross-check langsung ke situs resmi kemenag.go.id.",
+  
+      "Beredar klaim di media sosial TikTok bahwa Presiden Prabowo Subianto mempromosikan mobil listrik murah seharga Rp500.000. Informasi ini telah dikonfirmasi sebagai hoaks oleh tim cek fakta. Tidak ada pernyataan resmi dari Presiden Prabowo terkait program atau promosi mobil listrik dengan harga tersebut.",
+  
+      "Beredar informasi di media sosial yang mengklaim bahwa seluruh fitur TikTok Live telah dinonaktifkan permanen oleh Kementerian Komunikasi dan Digital Indonesia. Komdigi melalui kanal resminya telah membantah klaim tersebut dan menegaskan bahwa informasi yang beredar adalah hoaks serta tidak mencerminkan kebijakan yang dikeluarkan kementerian.",
+  
+      "Beredar klaim di media sosial bahwa Wakil Presiden Gibran Rakabuming Raka mengumumkan program tebus motor murah seharga Rp600.000 bagi seluruh masyarakat Indonesia. Klaim tersebut telah dikonfirmasi sebagai hoaks. Tidak ada program resmi pemerintah maupun pernyataan dari Wapres Gibran terkait program tebus motor dengan harga yang disebutkan tersebut.",
+  
+      "Beredar klaim viral di media sosial bahwa salju turun di dataran rendah Indonesia pada tahun 2026. Badan Meteorologi Klimatologi dan Geofisika atau BMKG menegaskan bahwa fenomena salju di dataran rendah Indonesia adalah tidak mungkin secara klimatologis dalam kondisi atmosfer saat ini, sehingga klaim yang beredar tersebut dinyatakan sebagai hoaks.",
+  
+      "Beredar klaim di media sosial Facebook yang menyatakan bahwa pada tahun 2026 seluruh rakyat Indonesia akan kehilangan tanah akibat aturan baru pemerintah. Kementerian Komunikasi dan Digital telah mengklarifikasi bahwa informasi tersebut adalah hoaks dan tidak ada regulasi pemerintah yang menyebabkan rakyat kehilangan hak atas tanah mereka."
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
