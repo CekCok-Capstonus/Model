@@ -1,0 +1,38 @@
+meta {
+  name: prediction multiple texts
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://127.0.0.1:8000/predict/batch
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "texts": [
+      "Harga emas Antam hari ini Jumat 15 Mei 2026 di Pegadaian tercatat sebesar Rp2.939.000 per gram, tidak berubah dari hari sebelumnya. Sementara itu harga emas UBS dan Galeri24 mengalami penurunan masing-masing menjadi Rp2.885.000 dan Rp2.828.000 per gram. Penurunan ini terjadi di tengah fluktuasi harga emas global yang dipengaruhi oleh kebijakan suku bunga bank sentral Amerika Serikat.",
+  
+      "TERUNGKAP!! Pemerintah Indonesia secara diam-diam telah mencampur zat kimia berbahaya bernama Fluoride dosis tinggi ke seluruh jaringan air minum PDAM di 34 provinsi sejak Januari 2026 untuk membuat rakyat menjadi bodoh dan mudah dikendalikan. Bukti dokumen rahasia ini telah bocor dan segera akan dihapus! Sebarkan sebelum terlambat!!",
+  
+      "Pemerintah menetapkan 15 Mei 2026 sebagai cuti bersama Kenaikan Yesus Kristus berdasarkan Surat Keputusan Bersama Tiga Menteri Nomor 1497 Tahun 2025. Penetapan ini menciptakan rangkaian libur panjang empat hari berturut-turut mulai Kamis 14 Mei hingga Minggu 17 Mei 2026, yang banyak dimanfaatkan masyarakat untuk bepergian dan beristirahat bersama keluarga.",
+  
+      "VIRAL!! Ilmuwan NASA telah membuktikan bahwa bumi sebenarnya berbentuk datar dan seluruh foto bumi bulat yang selama ini beredar adalah rekayasa komputer. Pemerintah dunia menyembunyikan fakta ini karena takut kehilangan kendali atas populasi. Ribuan ilmuwan yang mencoba mengungkap kebenaran ini telah dibungkam secara misterius!",
+  
+      "BRI Super League 2026 memasuki pekan ke-33 yang semakin menentukan karena dua tim besar Persib Bandung dan Borneo FC masih bersaing ketat dalam perburuan gelar juara dengan perolehan poin yang sama. Pada pekan ini keduanya akan menjalani laga tandang yang krusial yakni PSM Makassar melawan Persib Bandung serta Persijap melawan Borneo FC yang bisa menjadi penentu siapa yang bakal menjadi juara Liga Indonesia musim ini.",
+  
+      "BREAKING NEWS!! Presiden Indonesia telah menandatangani perjanjian rahasia untuk menjual Pulau Kalimantan kepada perusahaan multinasional asal Amerika Serikat seharga 500 miliar dolar. Perjanjian ini dilakukan tanpa sepengetahuan DPR dan rakyat Indonesia. Demonstrasi besar-besaran akan segera meletus di seluruh penjuru negeri menurut sumber terpercaya kami!",
+  
+      "Kementerian Sosial kembali menyalurkan Bantuan Pangan Non Tunai atau BPNT yang kini dikenal sebagai Kartu Sembako pada bulan Mei 2026 kepada Keluarga Penerima Manfaat di seluruh Indonesia. Pemerintah terus mengupayakan percepatan penyaluran agar bantuan tepat sasaran dan segera diterima oleh masyarakat yang membutuhkan, terutama menjelang periode kenaikan kebutuhan pokok.",
+  
+      "Anggota Komisi VIII DPR RI Dini Rahmania menilai penanganan judi online yang kini telah menyasar hampir 200 ribu anak di Indonesia tidak bisa hanya mengandalkan pemblokiran situs semata. Dini mendorong kolaborasi serius antara pemerintah, sekolah, platform digital, dan keluarga karena persoalan ini menyangkut masa depan generasi bangsa. Menteri Komunikasi dan Digital Meutya Hafid sebelumnya mengungkapkan bahwa sekitar 80 ribu di antaranya adalah anak berusia di bawah 10 tahun."
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
