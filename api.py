@@ -5,7 +5,9 @@ import numpy as np
 import pickle
 import os
 
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+os.environ["ABSL_LOGGING_MIN_LOG_LEVEL"] = "3"
 
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -26,7 +28,7 @@ TFIDF_PATH     = os.path.join(BASE_DIR, "src", "tokenizer", "tfidf_vectorizer.pk
 MAX_LEN_BILSTM = 200
 MAX_LEN_GRU    = 250
 MAX_LEN_CNN    = 250
-THRESHOLD = 0.5
+THRESHOLD = 0.80
 
 # ─── Custom Attention Layer ───────────────────────────────────────────────────
 class AttentionLayer(layers.Layer):
@@ -198,11 +200,18 @@ def _predict_single(text: str) -> tuple[float, float, float]:
 
 def _build_response(text: str, p_bilstm: float, p_gru: float, p_cnn: float) -> PredictResponse:
     avg     = float(np.mean([p_bilstm, p_gru, p_cnn]))
+
     is_fake = avg >= THRESHOLD
+
+    if is_fake:
+        final_confidence = 0.5 + ((avg - THRESHOLD) / (1.0 - THRESHOLD)) * 0.5
+    else:
+        final_confidence = 1.0 - (avg / THRESHOLD) * 0.5
+
     return PredictResponse(
         text=text,
         label="HOAKS" if is_fake else "FAKTA",
-        confidence=round(avg, 4),
+        confidence=round(final_confidence, 4), 
         is_fake=is_fake,
         model_scores=ModelScores(
             bilstm=round(p_bilstm, 4),
@@ -213,6 +222,10 @@ def _build_response(text: str, p_bilstm: float, p_gru: float, p_cnn: float) -> P
 
 
 # ─── Routes ───────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+
 @app.get("/", tags=["Health"])
 def root():
     return {"status": "ok", "message": "Fake News Detection API berjalan."}
